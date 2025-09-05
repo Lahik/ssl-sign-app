@@ -1,6 +1,6 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-#vscode
+# vscode
 .vscode
 
 # dependencies
@@ -28,6 +28,10 @@ expo-env.d.ts
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+
+# video files
+*.mp4
+*.mov
 
 # macOS
 .DS_Store
