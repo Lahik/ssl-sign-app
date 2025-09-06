@@ -8,6 +8,7 @@ import { Picker } from '@react-native-picker/picker';
 import Toast from 'react-native-toast-message';
 
 import { offlineTranslate } from '../logic/translator';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 
 export default function SignToTextScreen() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -95,8 +96,6 @@ export default function SignToTextScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sign → Text</Text>
-
       {/* Camera preview */}
       <View style={styles.cameraContainer}>
         {cameraOn ? (
@@ -112,6 +111,7 @@ export default function SignToTextScreen() {
       <View style={styles.buttonRow}>
         {!cameraOn ? (
           <TouchableOpacity style={styles.button} onPress={startPrediction}>
+            <MaterialIcons name="camera-alt" size={24} color="white" />
             <Text style={styles.buttonText}>Start Sign Recording</Text>
           </TouchableOpacity>
         ) : (
@@ -119,6 +119,7 @@ export default function SignToTextScreen() {
             style={[styles.button, styles.stopButton]}
             onPress={() => setCameraOn(false)}
           >
+            <MaterialIcons name="stop" size={24} color="white" />
             <Text style={styles.buttonText}>Stop</Text>
           </TouchableOpacity>
         )}
@@ -164,6 +165,7 @@ export default function SignToTextScreen() {
         </Picker>
 
         <TouchableOpacity style={styles.speakButton} onPress={handleSpeak}>
+          <MaterialIcons name="volume-up" size={24} color="white" />
           <Text style={styles.buttonText}>Speak</Text>
         </TouchableOpacity>
       </View>
@@ -207,6 +209,7 @@ const styles = StyleSheet.create({
   buttonRow: {
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 12,
   },
   button: {
@@ -214,6 +217,9 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 14,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   stopButton: {
     backgroundColor: '#d9534f',
@@ -224,8 +230,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   outputContainer: {
-    flex: 1,
-    marginVertical: 8,
+    marginVertical: 10
   },
   outputLabel: {
     fontWeight: '600',
@@ -249,12 +254,14 @@ const styles = StyleSheet.create({
   },
   picker: {
     flex: 1,
-    height: 44,
   },
   speakButton: {
     backgroundColor: '#1f7ae0',
     paddingVertical: 12,
     paddingHorizontal: 18,
     borderRadius: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
 });

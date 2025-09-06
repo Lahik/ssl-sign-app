@@ -15,6 +15,7 @@ import LargeButton from '../components/LargeButton';
 import VideoSequencePlayer from '../components/VideoSequencePlayer';
 import { sentenceToVideos } from '../logic/textToSign';
 import { LOCAL_TO_EN } from '../logic/localToEnglish';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 
 export default function TextToSignScreen() {
   const [text, setText] = useState('');
@@ -67,7 +68,6 @@ export default function TextToSignScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <View style={styles.top}>
-        <Text style={styles.title}>Text → Sign</Text>
 
         <View style={styles.row}>
           <Text style={styles.label}>Language:</Text>
@@ -87,8 +87,17 @@ export default function TextToSignScreen() {
         />
 
         <View style={styles.row}>
-          <LargeButton text="Translate" onPress={handleTranslate} />
-          <LargeButton text="Speak" onPress={handleSpeak} />
+          <LargeButton
+            text="Translate"
+            icon={<MaterialIcons name="translate" size={24} color="white" />}
+            onPress={handleTranslate}
+          />
+
+          <LargeButton
+            text="Speak"
+            icon={<FontAwesome name="volume-up" size={24} color="white" />}
+            onPress={handleSpeak}
+          />
         </View>
       </View>
 
@@ -100,7 +109,7 @@ export default function TextToSignScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, backgroundColor: '#fff' },
+  container: { flex: 1, padding: 16, backgroundColor: '#fff', alignItems: 'center', paddingTop: '50' },
   top: { gap: 12 },
   title: { fontSize: 20, fontWeight: '700', textAlign: 'center', marginBottom: 6 },
   row: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 15 },
